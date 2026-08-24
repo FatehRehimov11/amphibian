@@ -26,11 +26,16 @@ fun HomeScreen(
     uiState: AmphibianUiState,
     retryAction: () -> Unit
 ){
-    when(uiState){
-        is AmphibianUiState.Loading -> LoadingScreen()
-        is AmphibianUiState.Error -> ErrorScreen(retryAction)
-        is AmphibianUiState.Success -> LazyColumnScreen(uiState.amphibianCards)
+    Column(
+        modifier = modifier.fillMaxSize()
+    ) {
+        when(uiState){
+            is AmphibianUiState.Loading -> LoadingScreen()
+            is AmphibianUiState.Error -> ErrorScreen(retryAction)
+            is AmphibianUiState.Success -> LazyColumnScreen(uiState.amphibianCards)
+        }
     }
+
 
 }
 
